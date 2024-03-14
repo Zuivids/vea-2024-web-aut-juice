@@ -56,4 +56,17 @@ export class HomePage extends BasePage {
   static get submitReview(){
     return cy.get("#submitButton");
   }
+
+  static get selectCards(){
+    return cy.get("mat-card");
+  }
+
+  static get cardsPerPage(){
+    return cy.get(`mat-select[aria-label="Items per page:"]`);
+  }
+
+  static get cardsPerPageOption(){
+    return cy.get("#mat-select-0-panel mat-option");
+  }
+
 }
