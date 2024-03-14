@@ -7,6 +7,8 @@ import { SelectAddressPage } from "../pageObjects/SelectAdressPage";
 import { PaymentOptionsPage } from "../pageObjects/PaymentOptionPage";
 import { OrderCompletionPage } from "../pageObjects/OrderCompletionPage";
 import { OrderSummaryPage } from "../pageObjects/OrderSummaryPage";
+import { SavedAddressesPage } from "../pageObjects/SavedAdressesPage";
+import {CreateAddressPage} from "../pageObjects/CreateAdressPage";
 
 describe("Juice-shop scenarios", () => {
   context("Without auto login", () => {
@@ -179,7 +181,7 @@ describe("Juice-shop scenarios", () => {
     HomePage.selectCards.should("have.length",35);
     });
     // Create scenario - Buy Girlie T-shirt
-    it.only("Buy Girlie T-shirt",() => {
+    it("Buy Girlie T-shirt",() => {
     // Click on search icon
     HomePage.searchIcon.click();
     // Search for Girlie
@@ -215,15 +217,30 @@ describe("Juice-shop scenarios", () => {
   });
 
     // Create scenario - Add address
+    it.only("Buy Girlie T-shirt",() => {
     // Click on Account
+    HomePage.accountButton.click();
     // Click on Orders & Payment
+    HomePage.ordersButton.click();
     // Click on My saved addresses
+    HomePage.savedAddressed.click();
     // Create page object - SavedAddressesPage
     // Click on Add New Address
+    SavedAddressesPage.addButton.click();
     // Create page object - CreateAddressPage
     // Fill in the necessary information
+    CreateAddressPage.country.type("Latvia");
+      const name = "Some name here "
+      CreateAddressPage.name.type(name);
+      CreateAddressPage.mobileNumber.type("9999999999");
+      CreateAddressPage.zipCode.type("LV-2602");
+      CreateAddressPage.address.type("Bezmiega iela");
+      CreateAddressPage.city.type("Ventspils");
     // Click Submit button
+    CreateAddressPage.submitButton.click();
     // Validate that previously added address is visible
+    SavedAddressesPage.addressed.filter(`:contains('${name}')`).should("exist");
+  });
 
     // Create scenario - Add payment option
     // Click on Account
