@@ -42,25 +42,26 @@ describe("Juice-shop scenarios", () => {
       // Save that email address to some variable
       RegistrationPage.emailField.type(email);
       // Fill in password field and repeat password field with same password
-      RegistrationPage.passwordField.type("test");
-      RegistrationPage.repeatPasswordField.type("test");
+      RegistrationPage.passwordField.type("Test1234test!");
+      RegistrationPage.repeatPasswordField.type("Test1234test!");
       // Click on Security Question menu
-      // RegistrationPage.securityQuestion.click();
+      RegistrationPage.securityQuestion.click();
       // Select  "Name of your favorite pet?"
-      
+      RegistrationPage.petOption.click();
       // Fill in answer
-      
+      RegistrationPage.fillAnsear.type("Cat");
       // Click Register button
-      
+      RegistrationPage.registerButton.click();
       // Set email value to previously created email
-      
+      LoginPage.emailField.type(email);
       // Set password value to previously used password value
-      
+      LoginPage.passwordField.type("Test1234test!");
       // Click login button
-      
+      LoginPage.loginButton.click();
       // Click Account button
-      
+      HomePage.accountButton.click();
       // Validate that account name (with previously created email address) appears in the menu section
+      HomePage.profileMenuOption.should("contain",email);
     });
   });
 
