@@ -9,6 +9,7 @@ import { OrderCompletionPage } from "../pageObjects/OrderCompletionPage";
 import { OrderSummaryPage } from "../pageObjects/OrderSummaryPage";
 import { SavedAddressesPage } from "../pageObjects/SavedAdressesPage";
 import {CreateAddressPage} from "../pageObjects/CreateAdressPage";
+import { SavedPaymentMethodsPage } from "../pageObjects/SavedPaymentMethodsPage";
 
 describe("Juice-shop scenarios", () => {
   context("Without auto login", () => {
@@ -217,7 +218,7 @@ describe("Juice-shop scenarios", () => {
   });
 
     // Create scenario - Add address
-    it.only("Buy Girlie T-shirt",() => {
+    it("Buy Girlie T-shirt",() => {
     // Click on Account
     HomePage.accountButton.click();
     // Click on Orders & Payment
@@ -243,16 +244,30 @@ describe("Juice-shop scenarios", () => {
   });
 
     // Create scenario - Add payment option
+    it.only("Buy Girlie T-shirt",() => {
     // Click on Account
+    HomePage.accountButton.click();
     // Click on Orders & Payment
+    HomePage.ordersButton.click();
     // Click on My payment options
+    HomePage.savedPayments.click();
     // Create page object - SavedPaymentMethodsPage
     // Click Add new card
+    SavedPaymentMethodsPage.addDrop.click();
     // Fill in Name
+    const name = "Tosteris ";
+    SavedPaymentMethodsPage.addName.type(name);
     // Fill in Card Number
+    SavedPaymentMethodsPage.addCardNumber.type("1234567812345678");
     // Set expiry month to 7
+    SavedPaymentMethodsPage.addExpireMonth.select(6);
     // Set expiry year to 2090
+    SavedPaymentMethodsPage.addExpireYear.select(10);
     // Click Submit button
+    SavedPaymentMethodsPage.submitButton.click();
     // Validate that the card shows up in the list
+    SavedPaymentMethodsPage.cards.filter(`:contains('${name}')`).should("exist");
+    });
+
   });
 });
