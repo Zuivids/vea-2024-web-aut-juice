@@ -34,10 +34,18 @@ export class HomePage extends BasePage {
   }
 
   static get card(){
-    return cy.get(`mat-dialog-container`);
+    return cy.get("mat-dialog-container");
   }
 
   static get closeCard(){
     return cy.get(".cdk-overlay-container .cdk-overlay-backdrop");
+  }
+
+  static get reviews(){
+    return cy.get('[aria-label="Expand for Reviews"] > mat-expansion-panel-header');
+  }
+
+  static get comments(){
+    return cy.get(".comment");
   }
 }
