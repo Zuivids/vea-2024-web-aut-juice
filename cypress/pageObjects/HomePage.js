@@ -48,4 +48,12 @@ export class HomePage extends BasePage {
   static get comments(){
     return cy.get(".comment");
   }
+
+  static get reviewInput(){
+    return cy.get("textarea#mat-input-1");
+  }
+
+  static get submitReview(){
+    return cy.get("#submitButton");
+  }
 }
