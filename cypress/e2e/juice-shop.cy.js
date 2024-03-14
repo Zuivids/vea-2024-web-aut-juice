@@ -224,7 +224,7 @@ describe("Juice-shop scenarios", () => {
   });
 
     // Create scenario - Add address
-    it("Buy Girlie T-shirt",() => {
+    it("Add address",() => {
     // Click on Account
     HomePage.accountButton.click();
     // Click on Orders & Payment
@@ -250,7 +250,7 @@ describe("Juice-shop scenarios", () => {
   });
 
     // Create scenario - Add payment option
-    it("Buy Girlie T-shirt",() => {
+    it("Add payment option",() => {
     // Click on Account
     HomePage.accountButton.click();
     // Click on Orders & Payment
