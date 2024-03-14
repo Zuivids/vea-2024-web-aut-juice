@@ -1,4 +1,6 @@
 import { HomePage } from "../pageObjects/HomePage";
+import { LoginPage } from "../pageObjects/LoginPage";
+import { RegistrationPage } from "../pageObjects/RegistrationPage";
 
 describe("Juice-shop scenarios", () => {
   context("Without auto login", () => {
@@ -10,30 +12,54 @@ describe("Juice-shop scenarios", () => {
 
     it("Login", () => {
       // Click Account button
+      HomePage.accountButton.click();
       // Click Login button
+      HomePage.loginButton.click();
       // Set email value to "demo"
+      LoginPage.emailField.type("demo");
       // Set password value to "demo"
+      LoginPage.passwordField.type("demo");
       // Click Log in
+      LoginPage.loginButton.click();
       // Click Account button
+      HomePage.accountButton.click();
       // Validate that "demo" account name appears in the menu section
+      HomePage.profileMenuOption.should("contain","demo")
+
     });
 
-    it("Registration", () => {
+    it.only("Registration", () => {
       // Click Account button
+      HomePage.accountButton.click();
       // Login button
+      HomePage.loginButton.click();
       // Click "Not yet a customer?"
+      LoginPage.register.click();
       // Find - how to generate random number in JS
+      Math.round((Math.random() * 100) + 100)
       // Use that number to genarate unique email address, e.g.: email_7584@ebox.com
+      const email = `email_${Math.round((Math.random() * 100) + 100)}@ebox.com`
       // Save that email address to some variable
+      RegistrationPage.emailField.type(email);
       // Fill in password field and repeat password field with same password
+      RegistrationPage.passwordField.type("test");
+      RegistrationPage.repeatPasswordField.type("test");
       // Click on Security Question menu
+      // RegistrationPage.securityQuestion.click();
       // Select  "Name of your favorite pet?"
+      
       // Fill in answer
+      
       // Click Register button
+      
       // Set email value to previously created email
+      
       // Set password value to previously used password value
+      
       // Click login button
+      
       // Click Account button
+      
       // Validate that account name (with previously created email address) appears in the menu section
     });
   });
