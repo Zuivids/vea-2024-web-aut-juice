@@ -36,4 +36,8 @@ export class HomePage extends BasePage {
   static get card(){
     return cy.get(`mat-dialog-container`);
   }
+
+  static get closeCard(){
+    return cy.get(".cdk-overlay-container .cdk-overlay-backdrop");
+  }
 }

@@ -83,29 +83,43 @@ describe("Juice-shop scenarios", () => {
     });
 
     // Create scenario - Search 500ml and validate Lemon, while having multiple cards
-    it.only("Search 500ml and validate Lemon, while having multiple cards",() => {
+    it("Search 500ml and validate Lemon, while having multiple cards",() => {
     // Click on search icon
       HomePage.searchIcon.click();
     // Search for 500ml
       HomePage.searchIcon.type("500ml{enter}");
     // Select a product card - Lemon Juice (500ml)
-      HomePage.selectProduct.contains("Lemon Juice").click();
+      HomePage.selectProduct.contains("Lemon Juice (500ml)").click();
     // Validate that the card (should) contains "Sour but full of vitamins."
       HomePage.card.should("contain", "Sour but full of vitamins.");
     });
     
 
     // Create scenario - Search 500ml and validate cards
+    it.only("Search 500ml and validate cards",() => {
     // Click on search icon
+    HomePage.searchIcon.click();
     // Search for 500ml
+    HomePage.searchIcon.type("500ml{enter}");
     // Select a product card - Eggfruit Juice (500ml)
+    HomePage.selectProduct.contains("Eggfruit Juice (500ml)").click();
     // Validate that the card (should) contains "Now with even more exotic flavour."
+    HomePage.card.should("contain", "Now with even more exotic flavour.");
     // Close the card
+    HomePage.closeCard.click({force: true});
     // Select a product card - Lemon Juice (500ml)
+    HomePage.selectProduct.contains("Lemon Juice (500ml)").click();
     // Validate that the card (should) contains "Sour but full of vitamins."
+    HomePage.card.should("contain", "Sour but full of vitamins.");
     // Close the card
+    HomePage.closeCard.click({force: true});
     // Select a product card - Strawberry Juice (500ml)
+    HomePage.selectProduct.contains("Strawberry Juice (500ml)").click();
     // Validate that the card (should) contains "Sweet & tasty!"
+    HomePage.card.should("contain", "Sweet & tasty!");
+
+    });
+    
 
     // Create scenario - Read a review
     // Click on search icon
