@@ -84,7 +84,8 @@ describe("Juice-shop scenarios", () => {
       // Click on search icon
       HomePage.searchIcon.click();
       // Search for Lemon
-      HomePage.searchIcon.type("Lemon{enter}");
+      //HomePage.searchIcon.type("Lemon{enter}");
+      HomePage.searchInput.type("Lemon{enter}");
       // Select a product card - Lemon Juice (500ml)
       HomePage.selectProduct.contains("Lemon").click();
       // Validate that the card (should) contains "Sour but full of vitamins."
@@ -96,8 +97,9 @@ describe("Juice-shop scenarios", () => {
     // Click on search icon
       HomePage.searchIcon.click();
     // Search for 500ml
-      HomePage.searchIcon.type("500ml{enter}");
-    // Select a product card - Lemon Juice (500ml)
+      //HomePage.searchIcon.type("500ml{enter}");
+      HomePage.searchInput.type("500ml{enter}");
+      // Select a product card - Lemon Juice (500ml)
       HomePage.selectProduct.contains("Lemon Juice (500ml)").click();
     // Validate that the card (should) contains "Sour but full of vitamins."
       HomePage.card.should("contain", "Sour but full of vitamins.");
@@ -109,23 +111,24 @@ describe("Juice-shop scenarios", () => {
     // Click on search icon
     HomePage.searchIcon.click();
     // Search for 500ml
-    HomePage.searchIcon.type("500ml{enter}");
+    //HomePage.searchIcon.type("500ml{enter}");
+    HomePage.searchInput.type("500ml{enter}");
     // Select a product card - Eggfruit Juice (500ml)
     HomePage.selectProduct.contains("Eggfruit Juice (500ml)").click();
     // Validate that the card (should) contains "Now with even more exotic flavour."
-    HomePage.card.should("contain", "Now with even more exotic flavour.");
+    HomePage.card.should("contain.text", "Now with even more exotic flavour.");
     // Close the card
     HomePage.closeCard.click({force: true});
     // Select a product card - Lemon Juice (500ml)
     HomePage.selectProduct.contains("Lemon Juice (500ml)").click();
     // Validate that the card (should) contains "Sour but full of vitamins."
-    HomePage.card.should("contain", "Sour but full of vitamins.");
+    HomePage.card.should("contain.text", "Sour but full of vitamins.");
     // Close the card
     HomePage.closeCard.click({force: true});
     // Select a product card - Strawberry Juice (500ml)
     HomePage.selectProduct.contains("Strawberry Juice (500ml)").click();
     // Validate that the card (should) contains "Sweet & tasty!"
-    HomePage.card.should("contain", "Sweet & tasty!");
+    HomePage.card.should("contain.text", "Sweet & tasty!");
 
     });
     
@@ -135,7 +138,8 @@ describe("Juice-shop scenarios", () => {
      // Click on search icon
      HomePage.searchIcon.click();
     // Search for King
-    HomePage.searchIcon.type("King{enter}");
+    //HomePage.searchIcon.type("King{enter}");
+    HomePage.searchInput.type("King{enter}");
     // Select a product card - OWASP Juice Shop "King of the Hill" Facemask
     HomePage.selectProduct.contains('OWASP Juice Shop "King of the Hill"').click();
     // Click expand reviews button/icon (wait for reviews to appear)
@@ -151,7 +155,8 @@ describe("Juice-shop scenarios", () => {
     // Click on search icon
     HomePage.searchIcon.click();
     // Search for Raspberry
-    HomePage.searchIcon.type("Raspberry{enter}");
+    //HomePage.searchIcon.type("Raspberry{enter}");
+    HomePage.searchInput.type("Raspberry{enter}");
     // Select a product card - Raspberry Juice (1000ml)
     HomePage.selectProduct.contains('Raspberry Juice (1000ml)').click();
     // Type in review - "Tastes like metal"
@@ -186,7 +191,8 @@ describe("Juice-shop scenarios", () => {
     // Click on search icon
     HomePage.searchIcon.click();
     // Search for Girlie
-    HomePage.searchIcon.type("Girlie{enter}");
+    //HomePage.searchIcon.type("Girlie{enter}");
+    HomePage.searchInput.type("Girlie{enter}");
     // Add to basket "Girlie"
     HomePage.addToBasket.click();
     // Click on "Your Basket" button
@@ -244,7 +250,7 @@ describe("Juice-shop scenarios", () => {
   });
 
     // Create scenario - Add payment option
-    it.only("Buy Girlie T-shirt",() => {
+    it("Buy Girlie T-shirt",() => {
     // Click on Account
     HomePage.accountButton.click();
     // Click on Orders & Payment

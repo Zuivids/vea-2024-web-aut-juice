@@ -29,6 +29,9 @@ export class HomePage extends BasePage {
     return cy.get("#searchQuery");
   }
 
+  static get searchInput(){
+    return cy.get("#searchQuery input");
+  }
   static get selectProduct(){
     return cy.get(".item-name");
   }
